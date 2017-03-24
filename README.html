@@ -19,15 +19,6 @@
 
 <h2>Introduction</h2>
 
-<!--
-<p style="color: red; font-weight:bold">This README is for the latest version of MMQGIS that
-requires QGIS 2.0 or 2.1 (Master). Users of QGIS 1.8 should upgrade. If you
-must use 1.8, you need MMQGIS 
-<a href="http://michaelminn.com/linux/mmqgis/mmqgis.2012.12.07.zip">v2012.12.07</a>
-and help for that version is available
-<a href="http://michaelminn.com/linux/mmqgis/1.8">HERE...</a></p>
--->
-
 <p>MMQGIS is a set of <a href="http://www.python.org">Python</a> plugins
 for manipulating vector map layers in <a href="http://www.qgis.org">Quantum GIS</a>:
 CSV input/output/join, geocoding, geometry conversion, buffering, hub analysis, simplification, column modification, and simple animation.
@@ -60,100 +51,6 @@ can redistribute it and/or modify it under the terms of version 2 of the GNU
 General Public License (GPL v2) as published by the Free Software Foundation 
 (www.gnu.org). Bug reports or suggestions are welcome at the e-mail address 
 above, but I cannot promise a prompt or mutually satisfactory resolution.</p>
-
-<!--
-<p>MMQGIS has been partially incorporated into Sextante. If you attempt
-to install MMQGIS after installing Sextante, you may get the error 
-&quot;module' object has no attribute 'classFactory.&quot; This should
-be fixed in future versions of Sextante, but if you are still getting this
-error and want to have both MMQGIS and Sextante, you should uninstall
-Sextente, install MMQGIS and reinstall Sextante.</p>
-
-<p>This document also includes a very basic introduction to writing plugins for
-QGIS using Python.</p>
--->
-
-
-<!--
-<h2>Installation</h2>
-
-
-<p><i>Note that QGIS API is undergoing a significant change between versions 1.8 and 1.9 (Master). The
-current version of MMQGIS which works with the 1.9 API has been flagged
-as experimental so that users of QGIS 1.8 can still load the plugin through
-the QGIS Fetch Python Plugins installer. However, this documentation is for the
-current version of MMQGIS and upgrade to QGIS 1.9 (Master) is recommended.</i></p>
-
-<a href="http://pyqgis.org/repo/contributed">QGIS Contributed Repository</a>
-
-<p><b>Manual Install</b> If, for some reason, you do not wish to use the QGIS
-plugin installer, MMQGIS can be installed manually with the instructions below.
-QGIS and the associated packages for using Python plugins.  On Fedora distros,
-those packages are:</p>
-
-<pre>
-	Python
-	Qt
-	PyQt
-	PyQt-devel
-	PyQt4-devel
-	QGIS
-	QGIS-python
-</pre>
-
-<p>On Debian distros, the packages are:</p>
-
-<pre>
-	qgis
-	python-qgis
-	python-qgis-common
-	pyqt-tools
-	pyqt4-dev-tools
-</pre>
-
-
-yum install qgis-1.0.1-1.fc10.i386
-yum install qgis-python-1.0.1-1.fc10.i386
-
-sudo apt-get install python-qgis
-python-qgis-common
-pyqt-tools
-sudo apt-get install pyqt4-dev-tools
-
-<p><b>Download</b> the current version of MMQGIS
-<a href="http://michaelminn.com/linux/mmqgis/mmqgis.zip"><b>HERE</b></a>.
-
-<p><b>Unpack</b> the zip file and move the mmqgis directory of files
-to the mmqgis plugin directory:</p>
-
-<pre>
-	unzip mmqgis.zip 
-	mv mmqgis ~/.qgis/python/plugins
-</pre>
-
-<p>Optionally, you may install MMQGIS in the shared system plugin
-directory if want to share the installation with other users on a
-multiuser system or simply do not want extra files clogging your 
-/home directory</p>
-
-<p><b>Enable</b> MMQGIS by starting qgis and using the manage plugins
-utility (Plugins -&gt; Manage Plugins). The utility pops up a 
-list box of all available plugins and you should select the checkbox
-beside MMQGIS. After clicking OK, an MMQGIS dropdown menu should
-be visible on the menu bar.</p>
-
-<p><b>Python Library Problem</b>: On some distros (as of this writing),
-the QGIS python library (qgis-python) is not installed in a way that makes 
-it accessible to QGIS, so the plugins might not be visible from the
-Plugins dropdown. This can be fixed by setting up a symbolic link from the 
-expected library name to the version of the library that is installed.
-<a href="http://lists.osgeo.org/pipermail/qgis-user/2008-December/004177.html">
-(reference)</a>:
-
-<pre>
-	sudo ln -s /usr/lib/libqgispython.so.1.0 /usr/lib/libqgispython.so
-</pre>
--->
 
 
 <h2>Animation Tools</h2>
@@ -284,12 +181,6 @@ you wish to animate a non-editable layer (such as GPS tracking from a GPX file),
 you should save the layer to an editable source, such as a shapefile,
 and animate the editable layer.</p>
 
-<!--
-<p>Animate Rows uses the first column of attributes to sequentially select
-features from each layer. Therefore, the first column must have unique
-values. Duplicate values will result in multiple rows displaying when
-rows with the duplicate values are visualized.</p>
--->
 
 <p>If text display of timing is desired, a layer must be created
 with a column that has the desired display text, and that layer must
@@ -503,71 +394,6 @@ that has a projected coordinate system in the desired units.</p>
 
 <p>The grid is saved to a shapefile specified in the <i>Output Shapefile</i>
 form field.</p>
-
-<!--
-<p>fTools also has a vector grid tool (Tools -&gt; Research Tools -&gt; Vector grid),
-although the fTools gridline placement is specified based on the outer
-edges (min/max x/y) rather than from a central point. Specifying from 
-a central point with MMQGIS may be useful when drawing a grid relative to some 
-specific location.</p>
--->
-
-
-
-<!--
-<h3>Create Label Layer</h3>
-
-<div style="width: 100%;">
-<div style="width: 45%; display: inline-block;">
-<img src="http://michaelminn.com/linux/mmqgis/screenshots/mmqgis_label_layer_form.png" style="border:none;"/>
-</div>
-<div style="width: 45%; display: inline-block;">
-<img src="http://michaelminn.com/linux/mmqgis/screenshots/label_layer_example.png" style="border:none; float:right;"/>
-</div>
-</div>
-
-<p>Although label placement in QGIS has become more robust as the software has matured,
-individual formatting or placement of dynamically
-generated feature labels is still a bit cumbersome. It is possible to add attribute columns to the
-feature for setting various &quot;data defined&quot; formatting and positioning 
-parameters, although this represents a significant amount of work if you simply
-want to drag a few labels to new positions or delete some existing labels.</p>
-
-<p>The create label layer tool provides a way to work around this deficiency 
-by creating a point layer with unique attribute values from an existing 
-vector layer. Those points can then be labeled and moved at will.</p>
-
-<p>Duplicate labels for multiple features representing a single geographic entity
-can be avoided by creating points
-only for unique label names. The attributes of each point are the attributes
-for the first feature encountered in the source table, although the placement
-of the point is determined by a coordinate average of the centers of all
-features which have that label.</p>
-
-<p>The create label layer tool has a single dialog box that permits
-specification of the source vector layer, the attribute that should be
-used for determining unique label text, and a box for the output shapefile.
-The label layer will be automatically added to the map, but the user
-will need to adjust the properties of the layer to set the attribute
-that is used for labeling. Additional points can be added to support
-multiline labels.</p>
-
-<p>If some labels need to be individually tweaked for characteristics
-other than placement (such as formatting, rotation, font size, bolding, etc.),
-attribute columns will need to be added to the point layer that can be
-used to specify data defined label characteristics.</p>
-
-<p>Note that if the source data does not have a problem with numerous
-redundant labels, a better approach than using this tool may be to
-simply add additional attribute columns to the source data for data defined
-positioning, formatting, etc. Use of this tool breaks the dynamic linkage 
-between data and labels, so that labels will have to be manually adjusted
-to reflect changes to the underlying source data.</p>
-
-<p>It is possible to perform a similar task using the fTools polygon
-centroids tool. However, that tool does not work with line or point layers
-and does not deal with the problem of redundant labels on multi-feature entites.</p>
--->
 
 <h3>Hub Distance</h3>
 
@@ -1021,12 +847,6 @@ permutations of equal, greater than, or less than. String attributes can be
 searched with &quot;contains&quot; or &quot;begins with.&quot; Searches are
 case insensitive.</p>
 
-<!--
-<p>Export of results can be performed by selecting all desired features in the
-results box, then right-clicking on the layer in the Layers pane and selecting
-&quot;Save Selection As...&quot;</p>
--->
-
 <h3>Select</h3>
 
 <p align="center">
@@ -1059,73 +879,6 @@ separate output files to perform complex selections.</p>
 
 <h2>Modify Tools</h2>
 
-<!--
-<h3>Color Ramp</h3>
-
-<p align="center">
-<img src="http://michaelminn.com/linux/mmqgis/screenshots/mmqgis_color_map_form.png" style="border:none;"/></p>
-
-<p>The color map tool permits assignment of a continuous gradation of customized
-symbology colors to both vector and raster layers.</p>
-
-<p>While the new symbology (v1.9)
-capabilities of QGIS make this tool less useful than with the older, more-limited
-symbology, this tool provides a quick way to deal with custom color schemes,
-non-linear scales, and mixed symbol shapes.</p>
-
-<p>The Map Layer and Band/Attribute Name boxes permit selection of the feature
-layer that will be colored and the attribute used to determine coloration. 
-This tool only works with numeric (integer or floating-point) attributes.</p>
-
-<p>The Ramp Type indicates the way that the fill color ramp values are assigned:</p>
-
-<ul>
-<li>Quantiles: Values are ordered from low to high and features are grouped
-within each color category so an equal number of features are in each category</li>
-
-<li>Linear: Categories are created by taking the minimum and maximum attribute
-values and dividing the range equally by number</li>
-
-<li>Logarithmic: Categories are created by taking the minimum and maximum attribute
-values and dividing groups using a pseudo-logarithmic curve. This is useful
-when the distribution of values includes a small number of extremely high values
-that would distort a linear color ramp.</li>
-
-<li>Exponential: Categories are created by taking the minimum and maximum attribute
-values and dividing groups using a pseudo-exponential curve. This is useful
-when the distribution of values includes a small number of extremely small values
-that would distort a linear color ramp.</li>
-
-<li>Square Root: Categories are created by taking the minimum and maximum attribute
-values and dividing groups using a square-root curve. This is useful
-when the distribution of values includes a small number of extremely high values
-that would distort a linear color ramp, but not enough to justify a more-radical logarithmic curve.</li>
-
-<li>Square: Categories are created by taking the minimum and maximum attribute
-values and dividing groups using a squared-value curve. This is useful
-when the distribution of values includes a small number of extremely small values
-that would distort a linear color ramp, but not enough to justify a more-radical logarithmic curve.</li>
-
-<li>Discrete (Unique Value): The color ramp contains a separate color value for
-each different attribute value, ordered from low to high in the ramp. There is
-an arbitrary limit of 128 separate values to avoid unwieldy symbology configurations.</li>
-</ul>
-
-<p>Color Presets are provided, although custom colors
-may be selected by clicking on the &quot;Color...&quot; buttons. Intermediate colors
-are computed using linear interpolation of the individual red/green/blue values.</p>
-
-<p>For point features, one of the standard symbol types may be chosen: Circle,
-Triangle, Square, Rectangle, Diamond, Pentagon, Hexagon, Star and Arrow. 
-&quot;Mixed&quot; sequentially assigns all those shapes (except Arrow) to
-the different values.</p>
-
-<p>The Outline color button and Thickness selection box permit definition of the
-outline pen color and thickness.</p>
-
-<p>Sizes are specified in map-scale-independent points.</p>
--->
-
 <h3>Convert Geometry</h3>
 
 <p align="center">
@@ -1150,21 +903,6 @@ using the value from the first encountered feature.</li>
 for converting GPS or KML layers to 2-D for merging with other 2-D layers (elevation is discarded)</li>
 </ul>
 
-<!--
-<p>Note that shapefiles do not support a distinction between PolyLine / MultiPolyLine and
-Polygon / MultiPolygon. Therefore, merging shapes from an existing MultiPolyLine or MultiPolygon will
-have no effect unless the merge parameter is distinct.</p>
--->
-
-<!--
-<h3>Delete Columns</h3>
-
-<p align="center">
-<img src="http://michaelminn.com/linux/mmqgis/screenshots/mmqgis_delete_columns_form.png" style="border:none;"/></p>
-
-<p>The Delete Columns tool permits one or more fields to be deleted from a shapefile
-as it is saved to a new shapefile.</p>
--->
 
 <h3>Delete Duplicate Geometries</h3>
 
@@ -1234,14 +972,6 @@ data to maintain alignment. Sorting is based on a single attribute column
 and the result of the sort is saved to a shapefile specified in the Output
 Shapefile box. Sorting by attribute can be helpful for ordered CSV export
 or when viewing the Attribute Table</p>
-
-<!--
-<p>Shapefile attributes are stored in DBase format files (.dbf), which can be 
-viewed and edited in external programs like <a href="http://www.openoffice.org">OpenOffice.</a> 
-However, the ordering of the data in the .dbf file may not be optimal, but
-if the .dbf data is reordered without reordering the associated shapes, the
-data will be associated with the wrong shapes, making it useless.</p>
--->
 
 
 <h3>Text to Float</h3>
@@ -1569,302 +1299,6 @@ v2009.09.01</a> - Added merge layers tool</p>
 v2009.08.28</a> - Initial public release</p>
 
 
-
-
-<!--
-<hr/>
-
-<h2>Simple Example Plugins</h2>
-
-<p>Following are two simple of examples to demonstrate how to write a Python
-plugin for QGIS. Serious programming of such plugins requires knowledge 
-of the <a href="http://docs.python.org">Python</a> scripting language,
-the <a href="http://doc.trolltech.com">Qt user interface framework API</a>
-and the <a href="http://doc.qgis.org/stable/">QGIS programming API.</a>
-However, developing plugins is a nice (albeit time-consuming) way to 
-learn to use all three.</p>
-
-<h3>Simple Non-Dialog Plugin</h3>
-
-<p>A plugin consists of at least two files: an entry point module named
-__init__.py and a plugin class file.</p>
-
-<p>The following is an example __init__.py file simplified from the plugin
-example given in the QGIS users manual. It contains six unclassed
-methods that give QGIS information about the plugin and a way to access
-the plugin class:</p>
-
-<pre style="margin-left: 0.5in">
-# -*- coding: utf-8 -*-
-from demoplug import demoplug
-
-def name():
-	return "Demo QGIS Plugin"
-
-def description():
-	return "A simple demo plugin to load shapefiles"
-
-def version():
-	return "2009.08.04"
-
-def qgisMinimumVersion():
-	return "1.0"
-
-def authorName():
-	return "Michael Minn"
-
-def classFactory(iface):
-	return demoplug(iface)
-</pre>
-
-<p>The first five methods are for identification purposes. The &quot;classFactory&quot;
-method calls the constructor for the plugin class, in this case called &quot;demoplug&quot;
-and imported (at the top of the file) from the demoplug.py file. This file is as follows:</p>
-
-<pre style="margin-left: 0.5in">
-# -*- coding: utf-8 -*-
-# Import the PyQt and QGIS libraries
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from qgis.core import *
-import os.path
-
-class demoplug:
-	def __init__(self, iface):
-		# Save reference to the QGIS interface
-		self.iface = iface
-
-	def initGui(self):
-		# Create action to start plugin config and connect to the run method
-		icon = QIcon(os.path.dirname(__file__) + "/demoplug.png")
-		self.action = QAction(icon, "Add Vector Layer", self.iface.mainWindow())
-		QObject.connect(self.action, SIGNAL("activated()"), self.run)
-
-		self.iface.addPluginToMenu("&amp;demoplug", self.action)
-
-		print 'Loaded demoplug'
-
-	def unload(self):
-    		self.iface.removePluginMenu("&amp;demoplug", self.action)
-		print 'Unloaded demoplug'
-
-	def run(self):
-		fileName = QFileDialog.getOpenFileName(None, \
-			QString.fromLocal8Bit("Select a file:"),"", "*.shp *.gml")
-		if fileName.isNull():
-			QMessageBox.information(None, "Cancel", "File selection canceled")
-		else:
-			self.iface.addVectorLayer(fileName, "myLayer", "ogr")
-</pre>
-
-<p>The initGUI() method is called to add a Plugin menu entry and unload() is
-called to remove it from the menu. The run() method (which is an action called
-when the plugin menu item is selected) prompts the user for a shapefile
-(via the standard Qt open filename dialog) and then adds it as a vector laayer
-to the current project.</p>
-
-<p>Create these two files and move them to a subdirectory that you create in the
-QGIS plugin directory:</p>
-
-<pre>
-	mkdir ~/.qgis/python/plugins/demoplug
-	mv __init__.py demoplug.py ~/.qgis/python/plugins/demoplug
-</pre>
-
-<p>If you wish, you can also create a 24x24 pixel demoplug.png file with an icon
-you want to display in the menu to represent the plugin. </p>
-
-<p>After starting QGIS, under the &quot;Plugins&quot; dropdown should be
-an entry to &quot;Manage Plugins...&quot;. Scroll through the list to
-find demoplug and click the checkbox to enable it. This should place
-it in the menu so it can be run.
-
-<h3>Dialog Plugin</h3>
-
-<p>Most plugins use a custom dialog box to prompt the user for information
-needed to perform an operation.</p>
-
-<p align="center">
-<img src="http://michaelminn.com/linux/mmqgis/screenshots/demoplugqt-screenshot.png" style="border:none;"/>
-</p>
-
-
-<p>Dialog boxes can be created with direct Qt API calls, although it is
-easier to use the Qt designer application to lay out the dialog and
-use the pyuic4 compiler to create the class that can be used by a Python 
-plugin.</p>
-
-<p>For this example, the output of the pyuic4 compiler saved in a
-third file, mmqgisqtwidgets.py:</p>
-
-<pre style="margin-left: 0.5in">
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'demoplugqtwidgets.ui'
-#
-# Created: Wed Aug  5 09:23:05 2009
-#      by: PyQt4 UI code generator 4.4.4
-#
-# WARNING! All changes made in this file will be lost!
-
-from PyQt4 import QtCore, QtGui
-
-class Ui_demoplugqtwidgets(object):
-    def setupUi(self, demoplugqtwidgets):
-        demoplugqtwidgets.setObjectName("demoplugqtwidgets")
-        demoplugqtwidgets.resize(384, 105)
-        self.buttonBox = QtGui.QDialogButtonBox(demoplugqtwidgets)
-        self.buttonBox.setGeometry(QtCore.QRect(110, 60, 160, 26))
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName("buttonBox")
-        self.layerName = QtGui.QLineEdit(demoplugqtwidgets)
-        self.layerName.setGeometry(QtCore.QRect(40, 20, 301, 22))
-        self.layerName.setObjectName("layerName")
-
-        self.retranslateUi(demoplugqtwidgets)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), demoplugqtwidgets.accept)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), demoplugqtwidgets.reject)
-        QtCore.QMetaObject.connectSlotsByName(demoplugqtwidgets)
-
-    def retranslateUi(self, demoplugqtwidgets):
-        demoplugqtwidgets.setWindowTitle(QtGui.QApplication.translate("demoplugqtwidgets", \
-		"Dialog", None, QtGui.QApplication.UnicodeUTF8))
-</pre>
-
-
-<p>A demoplugqt.py class file is created to use this dialog:</p>
-
-<pre style="margin-left: 0.5in">
-# -*- coding: utf-8 -*-
-
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from qgis.core import *
-from demoplugqtwidgets import Ui_demoplugqtwidgets
-
-import os.path
-
-# ---------------------------------------------
-
-class demoplugqtdialog(QDialog, Ui_demoplugqtwidgets):
-	def __init__(self, iface):
-		QDialog.__init__(self)
-		self.iface = iface
-		self.setupUi(self)
-
-# ---------------------------------------------
-
-class demoplugqt:
-	def __init__(self, iface):
-		self.iface = iface
-
-	def initGui(self):
-		icon = QIcon(os.path.dirname(__file__) + "/demoplugqt.png")
-		self.action = QAction(icon, "Rename Layer", self.iface.mainWindow())
-		QObject.connect(self.action, SIGNAL("activated()"), self.run)
-
-		self.iface.addPluginToMenu("&amp;demoplug", self.action)
-		print 'Loaded demoplugqt'
-
-	def unload(self):
-    		self.iface.removePluginMenu("&amp;demoplug", self.action)
-		print 'Unloaded demoplugqt'
-
-	def run(self):
-		print "Running dialog"
-		layer = self.iface.activeLayer()
-		if layer == None:
-			QMessageBox.information(self.iface.mainWindow(), "Rename Layer", \
-				"Project has no active layers")
-			return
-	
-		dialog = demoplugqtdialog(self.iface)
-		dialog.exec_()
-
-		newname = str(dialog.layerName.displayText()).strip()
-		if newname &gt; "":
-			layer.setLayerName(newname)
-</pre>
-
-<p>A __init__.py file is created with info on the new plugin:</p>
-
-<pre style="margin-left: 0.5in">
-# -*- coding: utf-8 -*-
-from demoplugqt import demoplugqt
-
-def name():
-	return "Demo QGIS Plugin (with Qt dialog)"
-
-def description():
-	return "A simple demo plugin to rename layers"
-
-def version():
-	return "2009.08.05"
-
-def qgisMinimumVersion():
-	return "1.0"
-
-def authorName():
-	return "Michael Minn"
-
-def classFactory(iface):
-	return demoplugqt(iface)
-</pre>
-
-<p>Finally, create a subdirectory in the plugin directory and move these
-three files into it.</p>
-
-<pre>
-	mkdir ~/.qgis/python/plugins/demoplugqt
-	mv __init__.py demoplugqt.py demoplugqtwidgets.py ~/.qgis/python/plugins/demoplugqt
-</pre>
--->
-
-<!--
-http://wiki.qgis.org/qgiswiki/PythonBindings
-http://doc.trolltech.com/4.2/qstatusbar.html#messageChanged
-
-http://www.cs.usfca.edu/~afedosov/qttut/
-
-http://wiki.python.org/moin/JonathanGardnerPyQtTutorial
-
-pyuic4 form1.ui > form1.py
-
-
-yum install qgis-1.0.1-1.fc10.i386
-yum install qgis-python-1.0.1-1.fc10.i386
-
-sudo apt-get install python-qgis
-python-qgis-common
-pyqt-tools
-sudo apt-get install pyqt4-dev-tools
-
-pyuic4 : command not found
-
-pyrcc4 -o resources.py resources.qrc.
-
-               <pointsymbol>svg:/usr/share/qgis/svg/gpsicons/car.svg</pointsymbol>
-
-
-To provide the neccessary information for QGIS, the plugin needs to implement
-the methods 
-name(),
-description(), 
-version(), 
-qgisMinimumVersion() 
-	return "1.0"
-
-classFactory(QgisInterface) 
-
-
-/usr/share/qgis/python/plugins
-$HOME/.qgis/python/plugins
-
-icon = 24x24
-
-/usr/lib/qt4/bin/designer
--->
 
 </body>
 </html>
